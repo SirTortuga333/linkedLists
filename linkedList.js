@@ -66,7 +66,11 @@ export class LinkedList {
   }
   pop() {
     // removes last node
-    if (this.head() === null) return;
+    if (this.head() === null) return "Empty Linked List";
+    if(this.head().nextNode === null) {
+      this.headNode = null;
+      return "Node Removed";
+    }
 
     let tmp = this.head();
     while (tmp.nextNode.nextNode !== null) tmp = tmp.nextNode;
@@ -114,6 +118,10 @@ export class LinkedList {
   insertAt(value, index) {
     // inserts a node with "value" at "index"
     if (this.head() === null) return "Empty Linked List";
+    if(index === 0){
+      this.prepend(value);
+      return "Node Added";
+    }
 
     let prev = null;
     let tmp = this.head();
@@ -136,6 +144,10 @@ export class LinkedList {
     // removes node at "index"
     // inserts a node with "value" at "index"
     if (this.head() === null) return "Empty Linked List";
+    if(index === 0){
+      this.headNode = this.head().nextNode;
+      return "Node Removed"
+    }
 
     let prev = null;
     let tmp = this.head();
